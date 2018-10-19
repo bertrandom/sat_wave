@@ -100,11 +100,11 @@ namespace SatellaWave
             {
                 fsd.InitialDirectory = Program.lastExportDirectory;
             }
-            if (fsd.ShowDialog())
-            {
+            //if (fsd.ShowDialog())
+            //{
                 //No \ at the end
-                Program.ExportBSX(fsd.FileName);
-            }
+                //Program.ExportBSX(fsd.FileName);
+            //}
         }
 
         private void addChannelToolStripMenuItem_Click(object sender, EventArgs e)

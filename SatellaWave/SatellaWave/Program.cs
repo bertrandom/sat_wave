@@ -103,9 +103,19 @@ namespace SatellaWave
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            string[] arguments = Environment.GetCommandLineArgs();
+
+            string repoFile = arguments[arguments.Length - 2];
+            string exportFolder = arguments[arguments.Length - 1];
             mainWindow = new MainWindow();
 
-            Application.Run(mainWindow);
+            Random r = new Random();
+            lastExportID = (byte)r.Next(0, 5000);
+
+            LoadBSXRepository(repoFile);
+            ExportBSX(exportFolder);
+
+            //Application.Run(mainWindow);
         }
 
         public static void NewRepository()
@@ -2564,7 +2574,7 @@ namespace SatellaWave
             mapfile.Close();
 
             lastExportID++;
-            MessageBox.Show("Export is a success.", "Export", MessageBoxButtons.OK);
+//            MessageBox.Show("Export is a success.", "Export", MessageBoxButtons.OK);
         }
 
         public static void SaveChannelFile(byte[] filedata, ushort lci, string folderPath)
